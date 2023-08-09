@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <title>Update Bill</title>
+  </head>
+  <body>
+    <div class="bg-dark" style="height: 100vh">
+      <div class="container py-5 h-100 w-75">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card card-registration my-4">
+              <div class="row g-0">
+                <form
+                  class="card-body p-md-5 text-black"
+                  th:action="@{/admin/billEntity/save}"
+                  th:object="${billEntity}"
+                  method="post"
+                  id="form"
+                >
+                  <h3 class="mb-5 text-uppercase">Bill form</h3>
+                  <div >
+                    <input
+                      th:field="*{id}"
+                      type="number"
+                      class="d-none"
+                    />
+                    <label class="d-none">Id</label>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input
+                          th:field="*{name}"
+                          type="text"
+                          id="name"
+                          th:value="*{name}"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="fullname" required
+                          >Fullname</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input
+                          th:field="*{phone}"
+                          type="number"
+                          id="phone"
+                          th:value="*{phone}"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="phone" required
+                          >Phone</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input
+                      th:field="*{address}"
+                      type="text"
+                      id="address"
+                      th:value="*{address}"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="address" required
+                      >Address</label
+                    >
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-6 form-outline mb-4">
+                      <select
+                        id="payment"
+                        th:field="*{paymentMethod}"
+                        class="form-select form-select-lg"
+                      >
+                        <option
+                          class="d-none"
+                          th:value="*{address}"
+                        ></option>
+                        <option th:value="'cash'">Cash</option>
+                      </select>
+                      <label class="form-label" for="payment" required
+                        >Payment method</label
+                      >
+                    </div>
+                    <!-- <div class="col-12 col-sm-6 form-outline mb-4">
+                      <input
+                        th:field="*{createdDay}"
+                        id="createDay"
+                        type="date"
+                        th:value="*{createdDay}"
+                        class="form-control form-control-lg"
+                      />
+                      <label class="form-label" for="createDay" required
+                        >Created Date</label
+                      >
+                    </div> -->
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <select
+                          id="statuspayment"
+                          th:field="*{statusPay}"
+                          class="form-select form-select-lg"
+                        >
+                          <option th:value="'paid'">Pay</option>
+                          <option th:value="'unpaid'">Unpaid</option>
+                        </select>
+                        <label class="form-label" for="statuspayment" required
+                          >Status Pay</label
+                        >
+                      </div>
+                  </div>
+                  <div class="row">
+                    
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <select
+                          id="ship"
+                          th:field="*{statusShip}"
+                          class="form-select form-select-lg"
+                        >
+                          <option th:value="'shipping'">Shipping</option>
+                          <option th:value="'shipped'">Shipped</option>
+                          <option th:value="'complete'">Complete</option>
+                        </select>
+                        <label class="form-label" for="ship" required
+                          >Status Ship</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button
+                      class="col-12 col-sm-3 btn btn-warning btn-lg"
+                      type="submit"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

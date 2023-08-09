@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Retail store MVP</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link th:href="@{/css/index.css}" rel="stylesheet" />
+   <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+</head>
+
+<body>
+  <header class="section-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="col-8">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a th:href="@{/}" class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li th:if="${role}" class="nav-item">
+                <a class="nav-link" th:href="@{/admin}">Admin Page</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Shopping</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="'col-4">
+          <ul class="navbar-nav align-items-center w-100">
+            <li class="nav-item">
+              <a th:href="@{/logout}" th:text="${username}" class="nav-link align-items-center" title="Click to Logout"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="header-main border-bottom bg-white">
+      <div class="container-fluid">
+        <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+          <div th:href="@{/}" class="col-md-2">
+            <img class="d-none d-md-flex" src="https://i.ibb.co/RNGWxnD/logo.png" width="100" />
+          </div>
+          <div class="col-md-8">
+          <form id="formSearch" th:action="@{/search}" th:object="${keyword}" method="post"></form>
+            <div class="d-flex form-inputs">
+              <input id="input" class="form-control" type="text" placeholder="Search any productEntity..." />
+              <i class="bx bx-search"></i>
+            </div>
+           </form>
+          </div>
+
+          <div class="col-md-2">
+			  <a href="/cartEntity" class="link-dark">
+            <div class="d-flex d-none d-md-flex flex-row align-items-center">
+              <span class="shop-bag p-2"><i class="bi bi-cart2"></i></span>
+              <div class="d-flex flex-column ms-2">
+                <span th:text="${totalItem}" class="qty"> Product </span>
+                <span th:text="${totalPrice}" class="fw-bold">$0.00</span>
+              </div>
+            </div>
+          </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <div class="container">
+    <div class="my-4 d-flex flex-row-reverse">
+      <nav class="mx-2">
+        <ul class="pagination ">
+          <li class="page-item ">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <a href="#" class="link-dark" data-bs-toggle="modal" data-bs-target="#filterData"><i
+          class="bi bi-funnel-fill fs-3 text"></i></a>
+    </div>
+    <div th:switch="${listProductEntities}">
+		<h2 th:case="null" class="text-center">No Product yet!</h2>
+    <div th:case="*"  class="row">
+    
+    
+      <div th:each="productEntity : ${listProductEntities}" class="card col-lg-4 col-sm-4 border-0">
+        <img
+          th:src="@{${productEntity.img}}"
+          class="card-img-top" alt="productEntity-item">
+        <div class="card-info d-flex flex-column">
+          <a th:href="@{/detailProduct/{id}(id=${productEntity.id})}" >
+          	<button class="card-info-item fw-bold mb-2 p-2 bg-warning">Detail</button>
+        </a>
+       	<a th:href="@{/home/add/{id}(id=${productEntity.id})}">
+          <button class="cartEntity-btn card-info-item fw-bold p-2 bg-warning">Add cartEntity</button>
+        </a>
+        </div>
+        <div class="card-body p-1">
+          <p th:text="${productEntity.id}" class="d-none"></p>
+<!--           <p  th:text="${productEntity.categoryEntity}" class="categoryEntity text-center text-muted pt-2 mb-2"></p>
+ -->          <h3 th:text="${productEntity.name}" class="card-title fw-bold text-center m-0 pt-4"></h3>
+          <p th:text="${productEntity.price}" class="price text-center fw-bold text-warning fs-4"></p>
+        </div>
+      </div>
+     </div>
+   </div>   
+  </div>
+
+  <div class="modal" id="filterData">
+    <div class=" modal-dialog  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Filter Data</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form>
+            
+
+            <div class="mb-3">
+              <p class="fw-bold fs-5 m-1">Color</p>
+              <div class="form-check form-check-inline ml-2 ">
+                <input class="form-check-input" type="radio" name="color" id="black" value="black">
+                <label class="form-check-label" for="black">
+                  Black
+                </label>
+              </div>
+                        </div>
+
+            <div class="mb-3">
+              <p class="fw-bold fs-5 m-1">Price</p>
+              <div class="form-check form-check-inline ml-2">
+                <input class="form-check-input" name="brand" type="radio" value="Brand1" id="brand1">
+                <label class="form-check-label"  for="brand1">
+                  0 - 2000
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <p class="fw-bold fs-5 m-1">Brand</p>
+              <div class="form-check form-check-inline ml-2">
+                <input class="form-check-input" name="brand" type="checkbox" value="Brand1" id="brand1">
+                <label class="form-check-label"  for="brand1">
+                  Brand1
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <p class="fw-bold fs-5 m-1">Category</p>
+              <div class="form-check form-check-inline ml-2">
+                <input class="form-check-input" name="brand" type="checkbox" value="Brand1" id="brand1">
+                <label class="form-check-label"  for="brand1">
+                  Brand1
+                </label>
+              </div>
+            
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Save</button>
+        </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <footer class="w-100 text-center text-white" style="background-color: #21081a;">
+    <div class="container p-4"></div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright: Trần Mỹ Hạnh - 51900794
+      <a class="text-white" href="#">Retail Store</a>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-1.12.3.js" integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc=" crossorigin="anonymous"></script>
+  <script type="text/javascript" th:src="@{/js/cartEntity.js}"></script>
+</body>
+
+</html>
