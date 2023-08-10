@@ -1,6 +1,5 @@
 package spring.Controller.api;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import spring.Entity.OrderEntity;
 import spring.Service.OrderService;
@@ -28,7 +27,7 @@ public class OrderControllerAPI {
     	return orderService.findById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public OrderEntity addOrder(OrderEntity orderEntity) {
     	return orderService.addOrder(orderEntity);
     }

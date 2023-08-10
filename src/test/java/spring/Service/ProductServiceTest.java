@@ -9,6 +9,7 @@ import spring.Entity.ProductEntity;
 import spring.Repository.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -25,7 +26,6 @@ public class ProductServiceTest {
         productService = new ProductServiceImp(productRepository);
     }
 
-    @Test
     public void addProduct_ShouldReturnSavedProduct() {
         // Arrange
         ProductEntity productEntity = new ProductEntity();
@@ -46,18 +46,32 @@ public class ProductServiceTest {
         when(productRepository.findAll()).thenReturn(j);
 
         // Act
-        productService.findAllProduct();
+        List<ProductEntity> allProducts = productService.findAllProduct();
 
         // Assert
-        assertEquals(j, productRepository.findAll());
+        assertEquals(j, allProducts);
         verify(productRepository, Mockito.times(1)).findAll();
+    }
+
+    @Test
+    public void findProductById_ShouldReturnProduct() {
+        // Arrange
+        ProductEntity productEntity = new ProductEntity();
+        when(productRepository.findById(1L)).thenReturn(Optional.of(productEntity));
+
+        // Act
+        Optional<ProductEntity> foundProduct = productService.findProductById(1L);
+
+        // Assert
+        assertEquals(Optional.of(productEntity), foundProduct);
+        verify(productRepository, Mockito.times(1)).findById(1L);
     }
 
     @Test
 public void updateProduct_ShouldReturnUpdatedProduct() {
         // Arrange
         ProductEntity productEntity = new ProductEntity();
-        when(productRepository.getById(1L)).thenReturn(productEntity);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(productEntity));
         when(productRepository.save(productEntity)).thenReturn(productEntity);
 
         // Act
@@ -65,7 +79,7 @@ public void updateProduct_ShouldReturnUpdatedProduct() {
 
         // Assert
         assertEquals(productEntity, updatedProduct);
-        verify(productRepository, Mockito.times(1)).getById(1L);
+        verify(productRepository, Mockito.times(1)).findById(1L);
         verify(productRepository, Mockito.times(1)).save(productEntity);
     }
 
@@ -73,14 +87,14 @@ public void updateProduct_ShouldReturnUpdatedProduct() {
     public void deleteProductById_ShouldReturnDeletedProduct() {
         // Arrange
         ProductEntity productEntity = new ProductEntity();
-        when(productRepository.getById(1L)).thenReturn(productEntity);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(productEntity));
 
         // Act
         ProductEntity deletedProduct = productService.deleteProductById(1L);
 
         // Assert
         assertEquals(productEntity, deletedProduct);
-        verify(productRepository, Mockito.times(1)).getById(1L);
+        verify(productRepository, Mockito.times(1)).findById(1L);
         verify(productRepository, Mockito.times(1)).deleteById(1L);
     }
 }

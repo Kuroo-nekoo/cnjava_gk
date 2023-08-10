@@ -33,8 +33,4 @@ public class CartEntity {
 	
 	@OneToMany(mappedBy="cart", cascade = CascadeType.ALL)
 	private Set<OrderEntity> order;
-
-	public CartEntity(UserEntity userEntity) {
-		this.user = userEntity;
-	}
 }
