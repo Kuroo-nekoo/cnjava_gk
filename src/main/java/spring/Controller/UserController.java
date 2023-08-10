@@ -68,5 +68,4 @@ public class UserController {
 		cartService.addCart(cartEntity);
 		return "redirect:/login";
 	}
-
 }

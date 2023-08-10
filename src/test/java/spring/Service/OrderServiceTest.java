@@ -41,7 +41,18 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void findAllById_ShouldReturnAllOrder() {
+    public void findById_ShouldReturnOrderWithThatId() {
+        OrderEntity orderEntity = new OrderEntity();
+        when(orderRepository.findById(1L)).thenReturn(Optional.of(orderEntity));
+
+        OrderEntity order = orderService.findById(1L);
+
+        assertEquals(orderEntity, order);
+        verify(orderRepository, Mockito.times(1)).findById(1L);
+    }
+
+    @Test
+    public void findAll_ShouldReturnAllOrder() {
         // Arrange
         List<OrderEntity> j = List.of(new OrderEntity());
         when(orderRepository.findAll()).thenReturn(j);

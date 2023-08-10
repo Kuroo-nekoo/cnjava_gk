@@ -2,6 +2,7 @@ package spring.Entity;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,16 +26,12 @@ public class CartEntity {
 	@Column(name = "id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
 	@OneToOne(mappedBy = "cart", cascade = CascadeType.ALL)
-	@MapsId
 	private UserEntity user;
 	
 	@OneToMany(mappedBy="cart", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Set<OrderEntity> order;
-
-	public CartEntity(UserEntity userEntity) {
-		this.user = userEntity;
-	}
 }
