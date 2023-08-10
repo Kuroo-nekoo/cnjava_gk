@@ -1,0 +1,186 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FASHION STORE - Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+     <link rel="stylesheet" th:href="@{/css/sidebars.css}" />
+      <link th:href="@{/css/index.css}" rel="stylesheet" />
+      
+    <style>
+      body {
+        background-image: url("https://i.pinimg.com/236x/02/73/40/027340cc701b861a2f1245c6d4009285.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="p-3 navbar navbar-expand-lg navbar-dark bg-dark text-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img src="https://imagedelivery.net/5MYSbk45M80qAwecrlKzdQ/d6a2cc4d-107b-4646-7859-80bcab105e00/public" alt="Prada" width="110"
+        /></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About store</a>
+            </li>
+
+            <li class="nav-item dropend">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Category
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Clutch bags</a></li>
+                <li><a class="dropdown-item" href="#">Crossbody bags</a></li>
+                <li><a class="dropdown-item" href="#">Satchels bag</a></li>
+                <li><a class="dropdown-item" href="#">Shoulder bags</a></li>
+                <li><a class="dropdown-item" href="#">Wristlets</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <form class="d-flex my-auto">
+            <input
+              class="form-control me-2 rounded-pill"
+              style="background: none"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-success rounded-pill" type="submit">
+              Search
+            </button>
+          </form>
+
+          <div>
+            <a href="#" class="p-3 text-white">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          </div>
+
+          <a href="" class="link-light">Hi AN</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="d-flex align-items-center w-100 h-100">
+      <div class="container shadow">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-lg-4 p-0">
+            <img
+              class="d-none d-lg-block img-fluid w-100"
+              src="https://i.pinimg.com/236x/09/1b/f6/091bf61ca49d11dc83dcb84be991e3f8.jpg"
+            />
+          </div>
+
+          <div
+            class="col-12 col-lg-8 d-flex align-items-center p-5 p-md-3 pb-ms-0"
+            style="background: rgba(0, 0, 0, 0.5)"
+          >
+            <div class="container text-white">
+              <p class="h3 text-center pb-4">LOGIN</p>
+
+              <form method="post" th:action="@{/login}">
+                <div class="mb-4">
+                  <label for="username" class="form-label"
+                    >Username/Email</label
+                  >
+                  <input
+                    name="username"
+                    type="text"
+                    class="form-control"
+                    id="username"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                  />
+                </div>
+
+                <div class="mb-4">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="remember"
+                  />
+                  <label for="remember" class="form-label">Remember Me</label>
+                  <br />
+                  <span>Don't have an account yet?</span>
+                  <a class="d-inline" th:href="@{/register}"> Sign up</a>
+                </div>
+                <div th:if="${param.error}" class="mb-3 text-danger">
+                  Invalid username and password.
+                </div>
+
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    class="btn btn-dark text-success main-bg"
+                  >
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-white">
+      <hr class="my-5" />
+      <p class="text-center">Copyright @ 2023 All Rights Reserved by Tri Hung</p>
+    </div>
+  </body>
+</html>

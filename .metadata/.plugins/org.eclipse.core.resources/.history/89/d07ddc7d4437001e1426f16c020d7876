@@ -1,0 +1,64 @@
+.card-img-top {
+      position: relative;
+      background-color: #d8d8d8;
+    }
+
+    .card-info {
+      color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      opacity: 0;
+      margin: auto;
+      height: fit-content;
+      width: fit-content;
+    }
+
+    .card-info:hover,
+    .card-img-top:hover+.card-info {
+      opacity: 1;
+    }
+
+    button:hover {
+      background-color: #000 !important;
+      color: #ffc107 !important;
+    }
+
+    .card-info-item {
+      width: 8rem;
+      border: none;
+    }
+
+    .pagination>li>a {
+      background-color: white;
+      color: #000;
+    }
+
+    .pagination>li>a:focus,
+    .pagination>li>a:hover,
+    .pagination>li>span:focus,
+    .pagination>li>span:hover {
+      color: #000;
+      background-color: #ffc107;
+      border-color: #ddd;
+    }
+
+    .pagination>.active>a {
+      color: #000;
+      background-color: #ffc107;
+      border: solid 1px #ffc107;
+    }
+
+    .link-dark:hover {
+      opacity: 0.5;
+    }
+
+    .pagination>.active>a:hover {
+      opacity: 0.8;
+    }
+    a{
+    	text-decoration: none;
+    }

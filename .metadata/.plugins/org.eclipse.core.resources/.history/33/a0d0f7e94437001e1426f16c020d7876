@@ -1,0 +1,66 @@
+package spring.Entity;
+
+import java.util.Set;
+
+import javax.validation.constraints.NotBlank;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "user")
+public class UserEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+    @NotBlank(message = "Username may not be blank")
+	private String username;
+	
+    @NotBlank(message = "Roles may not be blank")
+	private String roles;
+    
+    @NotBlank(message = "Active may not be blank")
+	private boolean active;
+    
+    @NotBlank(message = "Password may not be blank")
+	private String password;
+    
+	private String fullname;
+	
+    @NotBlank(message = "Address may not be blank")
+	private String address;
+    
+    @NotBlank(message = "Phone may not be blank")
+	private String phone;
+    
+	private int age;
+	
+	private String sex;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+    @JoinColumn(name = "id", referencedColumnName = "id")
+	private CartEntity cart;
+	
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+	private Set<BillEntity> bills;
+	
+	public UserEntity() {
+		
+	}
+
+
+}

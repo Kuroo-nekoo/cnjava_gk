@@ -1,0 +1,327 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FASHION STORE - Register</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/sidebars.css}" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <style>
+      body {
+        background-image: url("https://i.pinimg.com/236x/02/73/40/027340cc701b861a2f1245c6d4009285.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="p-3 navbar navbar-expand-lg navbar-dark bg-dark text-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="https://imagedelivery.net/5MYSbk45M80qAwecrlKzdQ/d6a2cc4d-107b-4646-7859-80bcab105e00/public"
+            alt="Prada"
+            width="80"
+        /></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About store</a>
+            </li>
+
+            <li class="nav-item dropend">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Category
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Clutch bags</a></li>
+                <li><a class="dropdown-item" href="#">Crossbody bags</a></li>
+                <li><a class="dropdown-item" href="#">Satchels bag</a></li>
+                <li><a class="dropdown-item" href="#">Shoulder bags</a></li>
+                <li><a class="dropdown-item" href="#">Wristlets</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <form class="d-flex my-auto">
+            <input
+              class="form-control me-2 rounded-pill"
+              style="background: none"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-success rounded-pill" type="submit">
+              Search
+            </button>
+          </form>
+
+          <div>
+            <a href="#" class="p-3 text-white">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          </div>
+
+          <a href="" class="link-light"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="d-flex align-items-center w-100 h-100">
+      <div class="container shadow">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-lg-5 p-0">
+            <img
+              class="d-none d-lg-block img-fluid w-100 h-100"
+              src="https://assets.vogue.com/photos/632c8c0c5057422b317d0c94/master/w_1920,c_limit/00048-prada-spring-2023-ready-to-wear-details-credit-gorunway.jpg"
+            />
+          </div>
+
+          <div
+            class="col-12 col-lg-7 d-flex align-items-center p-5 p-md-3 pb-ms-0"
+            style="background: rgba(0, 0, 0, 0.5)"
+          >
+            <div class="container text-white">
+              <p class="h3 text-center pb-4">REGISTER</p>
+
+              <form
+                method="post"
+                th:onsubmit="return checkPass()"
+                th:action="@{/register}"
+                th:object="${userEntity}"
+                id="form"
+              >
+                <div class="mb-4">
+                  <label for="username" class="form-label"
+                    >Username/Email</label
+                  >
+                  <input
+                    name="username"
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    th:field="*{username}"
+                    required
+                  />
+                </div>
+
+                <div class="mb-4 row">
+                  <div class="col-12 col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      th:field="*{password}"
+                      required
+                    />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label" for="password-confirm"
+                      >Confirm password</label
+                    >
+                    <input
+                      name="confirm-password"
+                      type="password"
+                      class="form-control"
+                      id="password-confirm"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-4 row">
+                  <div class="col-12 col-md-6">
+                    <label for="fullname" class="form-label">Fullname</label>
+                    <input
+                      name="fullname"
+                      type="text"
+                      class="form-control"
+                      id="fullname"
+                      th:field="*{fullname}"
+                      required
+                    />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input
+                      name="phone"
+                      type="text"
+                      class="form-control"
+                      id="phone"
+                      th:field="*{phone}"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="address" class="form-label">Address</label>
+                  <input
+                    name="address"
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    th:field="*{address}"
+                    required
+                  />
+                </div>
+
+                <div class="mb-4 row">
+                  <div class="col-12 col-md-6">
+                    <label for="birthday" class="form-label">Birthday</label>
+                    <input
+                      th:field="*{age}"
+                      name="birthday"
+                      type="date"
+                      class="form-control"
+                      id="birthday"
+                      required
+                    />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="d-block">Gender</label>
+
+                    <div class="d-flex justify-content-between mt-4">
+                      <div>
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="femaleGender"
+                          th:value="female"
+                          th:field="*{sex}"
+                        />
+                        <label class="form-check-label" for="femaleGender"
+                          >Female</label
+                        >
+                      </div>
+
+                      <div>
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="maleGender"
+                          th:value="male"
+                          th:field="*{sex}"
+                        />
+                        <label class="form-check-label" for="maleGender"
+                          >Male</label
+                        >
+                      </div>
+
+                      <div>
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="other"
+                          th:value="other"
+                          th:field="*{sex}"
+                        />
+                        <label class="form-check-label" for="other"
+                          >Other</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <!-- <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="remember"
+                  />
+                  <label for="remember" class="form-label">Remember Me</label> 
+                  <br />-->
+                  <span>Do you already have an account?</span>
+                  <a class="d-inline" th:onclick="/login"> Login now</a>
+                </div>
+                <div th:if="${param.error}" class="mb-3 text-danger">
+                  Invalid username and password.
+                </div>
+
+                <div class="d-grid">
+                  <button
+                    th:onclick="resetForm()"
+                    type="button"
+                    class="btn btn-light btn-lg"
+                  >
+                    Reset all
+                  </button>
+                  <span class="p-2 text-center">OR</span>
+                  <button
+                    type="submit"
+                    class="btn btn-dark text-success main-bg btn-lg"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-white">
+      <hr class="my-5" />
+      <p class="h2 fw-blod mx-5">CONTACT</p>
+      <ul class="list-group mx-5 list-unstyled">
+        <li>Email: Run@gmail.com</li>
+        <li>Phone: 0923423424</li>
+        <li>Address: Abc Address Dicrict XYZ OMP City</li>
+      </ul>
+      <hr class="my-5" />
+      <p class="text-center">Copyright @ 2023 All Rights Reserved by Team</p>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/checkpass.js}"></script>
+  </body>
+</html>
