@@ -43,21 +43,19 @@ public class IndexController {
 		Double price = 0.0;
 		Long totalQuantity = (long) 0;
 		List<OrderEntity> totalItem = orderService.findAllByCartId(cartEntity.getId());
-		//Lấy chi tiết giỏ hàng -> tiến hành đếm sp và tính tiền.
-		
+
 		  if (totalItem != null) {
 			  for (OrderEntity dc : totalItem) {
-				  System.out.println(dc.getQuantity() + " " + dc.getProduct().getPrice());
 				  price += dc.getQuantity() * dc.getProduct().getPrice();
-				  totalQuantity += dc.getQuantity();
+				  totalQuantity += 1;
 			  }			  
 		  }
 		  
 		  String role = authentication.getAuthorities().toArray()[0].toString();
-		if ( role.equalsIgnoreCase("ROLE_ADMIN")) {
+		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
 			model.addAttribute("role","admin");
 		};
-		
+
 		model.addAttribute("totalPrice", "$" + price);
 		model.addAttribute("totalItem", totalQuantity);
 		model.addAttribute("username", "Hi " + authentication.getName());

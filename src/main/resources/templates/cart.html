@@ -157,7 +157,7 @@
             </div>
 
             <div class="col-md-2">
-              <a href="/cartEntity" class="link-dark">
+              <a href="/cart" class="link-dark">
                 <div
                   class="d-flex d-none d-md-flex flex-row align-items-center"
                 >
@@ -177,7 +177,7 @@
     <div class="container p-2">
       <h1 class="text-center mt-5">Shopping Cart</h1>
 
-      <div th:switch="${listProductEntities}">
+      <div th:switch="${listProducts}">
         <h2 th:case="null" class="text-center">No Product yet!</h2>
 
         <table th:case="*" class="table mt-3 table-responsive table-hover">
@@ -192,21 +192,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="p : ${listProductEntities}">
+            <tr th:each="p : ${listProducts}">
               <!--             <th scope="row">1</th>
  -->
-              <td><img th:src="@{${p.productEntity.img}}" width="100rem" /></td>
-              <td th:text="${p.productEntity.name}"></td>
+              <td><img th:src="@{${p.product.img}}" width="100rem" /></td>
+              <td th:text="${p.product.name}"></td>
               <td class="w-25">
-                <a th:href="@{/cartEntity/add/{id}(id=${p.productEntity.id})}">
+                <a th:href="@{/cart/add/{id}(id=${p.product.id})}">
                   <button class="btn btn-warning">+</button>
                 </a>
                 <span th:text="${p.quantity}" class="p-2"></span>
-                <a th:href="@{/cartEntity/minus/{id}(id=${p.productEntity.id})}">
+                <a th:href="@{/cart/minus/{id}(id=${p.product.id})}">
                   <button class="btn btn-warning">-</button>
                 </a>
               </td>
-              <td th:text="${p.productEntity.price}"></td>
+              <td th:text="${p.product.price}"></td>
             </tr>
           </tbody>
           <tfoot>
@@ -227,7 +227,6 @@
     >
       <div class="container p-4"></div>
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2020 Copyright: Trần Mỹ Hạnh - 51900794
         <a class="text-white" href="#">Retail Store</a>
       </div>
     </footer>

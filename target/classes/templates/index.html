@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link th:href="@{/css/index.css}" rel="stylesheet" />
+  <link href="/css/index.css" rel="stylesheet" />
    <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
       integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
@@ -70,7 +70,7 @@
           </div>
 
           <div class="col-md-2">
-			  <a href="/cartEntity" class="link-dark">
+			  <a href="/cart" class="link-dark">
             <div class="d-flex d-none d-md-flex flex-row align-items-center">
               <span class="shop-bag p-2"><i class="bi bi-cart2"></i></span>
               <div class="d-flex flex-column ms-2">
@@ -107,17 +107,16 @@
       <a href="#" class="link-dark" data-bs-toggle="modal" data-bs-target="#filterData"><i
           class="bi bi-funnel-fill fs-3 text"></i></a>
     </div>
-    <div th:switch="${listProductEntities}">
+    <div th:switch="${listProducts}">
 		<h2 th:case="null" class="text-center">No Product yet!</h2>
     <div th:case="*"  class="row">
-    
-    
-      <div th:each="productEntity : ${listProductEntities}" class="card col-lg-4 col-sm-4 border-0">
+
+      <div th:each="productEntity : ${listProducts}" class="card col-lg-4 col-sm-4 border-0">
         <img
           th:src="@{${productEntity.img}}"
           class="card-img-top" alt="productEntity-item">
         <div class="card-info d-flex flex-column">
-          <a th:href="@{/detailProduct/{id}(id=${productEntity.id})}" >
+          <a th:href="@{product/{id}(id=${productEntity.id})}" >
           	<button class="card-info-item fw-bold mb-2 p-2 bg-warning">Detail</button>
         </a>
        	<a th:href="@{/home/add/{id}(id=${productEntity.id})}">
@@ -201,13 +200,12 @@
   <footer class="w-100 text-center text-white" style="background-color: #21081a;">
     <div class="container p-4"></div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright: Trần Mỹ Hạnh - 51900794
       <a class="text-white" href="#">Retail Store</a>
     </div>
   </footer>
 
   <script src="https://code.jquery.com/jquery-1.12.3.js" integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc=" crossorigin="anonymous"></script>
-  <script type="text/javascript" th:src="@{/js/cartEntity.js}"></script>
+  <script type="text/javascript" th:src="@{/js/cart.js}"></script>
 </body>
 
 </html>

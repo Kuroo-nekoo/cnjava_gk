@@ -52,7 +52,7 @@ public class ProductController {
 		productService.updateProduct(productEntity, id);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteProductById(@PathVariable("id") Long id) {
 		productService.deleteProductById(id);
 	}
@@ -60,6 +60,7 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public String showProductById(@PathVariable("id") long id, Model model, Authentication authentication) {
 		Optional<ProductEntity> productEntity = productService.findProductById(id);
+		System.out.println(productEntity.get());
 		if (productEntity.isEmpty()) {
 			throw new RuntimeException("Not found");
 		} else {
