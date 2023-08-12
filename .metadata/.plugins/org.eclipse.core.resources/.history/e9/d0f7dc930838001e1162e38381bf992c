@@ -1,0 +1,314 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FASHION STORE - Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+        <link th:href="@{/css/sidebar.css}" rel="stylesheet" />
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      .dropdown-item:active {
+        background-color: #198754 !important;
+      }
+
+      .content-containter {
+        min-width: 90vw;
+      }
+
+      .collection-container img {
+        transition: transform 0.3s;
+          border-radius: 0.5rem;
+        
+      }
+
+      .img-card:hover img {
+        transform: scale(1.02);
+        opacity: 0.9;
+      }
+
+      .img-card {
+        position: relative;
+      }
+
+      .button-when-hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10%;
+        position: absolute;
+        width: calc(100% - var(--bs-gutter-x));
+        bottom: 0;
+        left: calc(var(--bs-gutter-x) / 2);
+        color: #fff;
+        text-align: center;
+        transform: scale(1.02);
+        display: none;
+        font-size: 1.5rem;
+      }
+
+      .collection-container img:hover .button-when-hover {
+        display: block !important;
+        border: rgb(0, 0, 0);
+      }
+    </style>
+
+    <script>
+      $(document).ready(function () {
+        let imgCard = $(".img-card");
+        let buttonWhenHover = $(".button-when-hover");
+        imgCard.hover(
+          function () {
+            $(this).children().last().css("display", "block");
+            console.log("hovering");
+          },
+          function () {
+            $(this).children().last().css("display", "none");
+            console.log("not hovering");
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <nav class="p-3 navbar navbar-expand-lg navbar-dark bg-dark text-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><img
+              src="https://imagedelivery.net/5MYSbk45M80qAwecrlKzdQ/d6a2cc4d-107b-4646-7859-80bcab105e00/public"
+              alt="Prada"
+              width="80"
+          /></a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li th:if="${role}" class="nav-item">
+                <a class="nav-link" th:href="@{/admin}">Admin Page</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/home}"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About store</a>
+              </li>
+              <li class="nav-item dropend">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Category
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item" href="#">Clutch bags</a></li>
+                  <li><a class="dropdown-item" href="#">Crossbody bags</a></li>
+                  <li><a class="dropdown-item" href="#">Satchels bag</a></li>
+                  <li><a class="dropdown-item" href="#">Shoulder bags</a></li>
+                  <li><a class="dropdown-item" href="#">Wristlets</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <form class="d-flex my-auto">
+              <input
+                class="form-control me-2 rounded-pill"
+                style="background: none"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-success rounded-pill" type="submit">
+                Search
+              </button>
+            </form>
+
+            <div>
+              <a href="#" class="p-3 text-white">
+                <i class="fa-solid fa-cart-shopping text-decoration-none"></i>
+              </a>
+
+                <a
+                  th:href="@{/logout}"
+                  th:text="${username}"
+                  class="nav-link align-items-center d-inline text-decoration-none"
+                  title="Click to Logout"
+                ></a>
+            </div>
+
+            <a href="" class="link-light"></a>
+          </div>
+        </div>
+      </nav>
+
+      <img
+        src="https://images.opumo.com/wordpress/wp-content/uploads/2022/07/opumo-banner-24.jpg"
+        class="d-block w-100 banner"
+        alt="banner"
+      />
+    </div>
+    <div class="container content-containter">
+      <p class="fw-bold text-end mt-5">COLECTION SUMMER 2023</p>
+      <hr />
+      <div class="collection-container mt-5">
+        <div class="row justify-content-between ">
+          <a href="#" class="col-12 col-sm-6 img-card ">
+            <img
+              class="img-fluid mt-2 img-card"
+              src="./img/collection1.png"
+              alt="collection summer"
+            />
+            <i class="fa-regular fa-eye button-when-hover"></i>
+          </a>
+          <a href="#" class="col-12 col-sm-6 img-card">
+            <img
+              class="img-fluid mt-2"
+              src="./img/collection2.png"
+              alt="collection summer"
+            />
+            <i class="fa-regular fa-eye button-when-hover"></i>
+          </a>
+        </div>
+        <div class="row justify-content-around">
+          <a href="#" class="col-12 col-sm-6 img-card">
+            <img
+              class="img-fluid mt-3"
+              src="./img/collection3.png"
+              alt="collection summer"
+            />
+            <i class="fa-regular fa-eye button-when-hover"></i>
+          </a>
+          <a href="#" class="col-12 col-sm-6 img-card">
+            <img
+              class="img-fluid mt-3"
+              src="./img/collection4.png"
+              alt="collection summer"
+            />
+            <i class="fa-regular fa-eye button-when-hover"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5" />
+    <p class="h1 text-center fw-bold text-uppercase">Shopping</p>
+
+    <div class="container">
+      <div class="my-4 d-flex flex-row-reverse">
+        <nav class="mx-2">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="#"
+          class="link-dark"
+          data-bs-toggle="modal"
+          data-bs-target="#filterData"
+          ><i class="bi bi-funnel-fill fs-3 text"></i
+        ></a>
+      </div>
+      <div th:switch="${listProductEntities}">
+        <h2 th:case="null" class="text-center">No Product yet!</h2>
+        <div th:case="*" class="row">
+          <div
+            th:each="productEntity : ${listProductEntities}"
+            class="card col-lg-4 col-sm-4 border-0"
+          >
+            <img
+              th:src="@{${productEntity.img}}"
+              class="card-img-top"
+              alt="productEntity-item"
+            />
+            <div class="card-info d-flex flex-column">
+              <a th:href="@{/detailProduct/{id}(id=${productEntity.id})}">
+                <button class="card-info-item fw-bold mb-2 p-2 bg-success">
+                  Detail
+                </button>
+              </a>
+              <a th:href="@{/home/add/{id}(id=${productEntity.id})}">
+                <button
+                  class="cartEntity-btn card-info-item fw-bold p-2 px-3 bg-success rounded-pill text-white shadow"
+                >
+                  Add cartEntity
+                </button>
+              </a>
+            </div>
+            <div class="card-body p-1">
+              <p th:text="${productEntity.id}" class="d-none"></p>
+              <!--           <p  th:text="${productEntity.categoryEntity}" class="categoryEntity text-center text-muted pt-2 mb-2"></p>
+   -->
+              <h3
+                th:text="${productEntity.name}"
+                class="card-title fw-bold text-center m-0 pt-4"
+              ></h3>
+              <p
+                th:text="${productEntity.price}"
+                class="price text-center fw-bold text-success fs-4"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <hr class="my-5" />
+      <p class="text-center">
+        Copyright @ 2023 All Rights Reserved by Tri Hung
+      </p>
+    </div>
+  </body>
+</html>
