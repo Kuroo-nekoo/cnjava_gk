@@ -157,7 +157,7 @@
             </div>
 
             <div class="col-md-2">
-              <a href="/cartEntity" class="link-dark">
+              <a href="/cart" class="link-dark">
                 <div
                   class="d-flex d-none d-md-flex flex-row align-items-center"
                 >
@@ -198,11 +198,11 @@
               <td><img th:src="@{${p.product.img}}" width="100rem" /></td>
               <td th:text="${p.product.name}"></td>
               <td class="w-25">
-                <a th:href="@{/cartEntity/add/{id}(id=${p.product.id})}">
+                <a th:href="@{/cart/add/{id}(id=${p.product.id})}">
                   <button class="btn btn-warning">+</button>
                 </a>
                 <span th:text="${p.quantity}" class="p-2"></span>
-                <a th:href="@{/cartEntity/minus/{id}(id=${p.product.id})}">
+                <a th:href="@{/cart/minus/{id}(id=${p.product.id})}">
                   <button class="btn btn-warning">-</button>
                 </a>
               </td>
