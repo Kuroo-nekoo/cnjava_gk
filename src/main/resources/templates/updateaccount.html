@@ -21,7 +21,7 @@
                   th:onsubmit="return checkPass()"
                   class="card-body p-md-5 text-black"
                   th:action="@{/admin/update}"
-                  th:object="${userEntity}"
+                  th:object="${user}"
                   method="post"
                   id="form"
                 >
@@ -50,8 +50,9 @@
                           type="number"
                           id="phone"
                           class="form-control form-control-lg"
+                          required
                         />
-                        <label class="form-label" for="phone" required
+                        <label class="form-label" for="phone"
                           >Phone</label
                         >
                       </div>
@@ -64,8 +65,9 @@
                       type="text"
                       id="address"
                       class="form-control form-control-lg"
+                      required
                     />
-                    <label class="form-label" for="address" required
+                    <label class="form-label" for="address"
                       >Address</label
                     >
                   </div>

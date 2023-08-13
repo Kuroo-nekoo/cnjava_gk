@@ -113,7 +113,8 @@ public class AdminController {
 	public String updateAccount(@PathVariable("id") long id,Model model) {
 		UserEntity userEntity = userService.getById(id);
 		model.addAttribute("user", userEntity);
-		return "updateaccount";	}
+		return "updateaccount";
+	}
 	
 	@GetMapping("/admin/delete/{id}")
 	public String deleteAccount(@PathVariable("id") long id) {

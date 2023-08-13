@@ -58,7 +58,7 @@
               <li class="nav-item">
                 <a
                   th:href="@{/logout}"
-                  th:text="${userEntity}"
+                  th:text="${user}"
                   class="nav-link align-items-center"
                   title="Click to Logout"
                 ></a>
@@ -114,7 +114,7 @@
         <div class="col-12 col-md-8 mt-3 p-4 pb-0 mb-md-0 mb-5">
           <!-- Form billing address -->
           <h4 class="mb-3">Billing address</h4>
-          <form action="#" th:action="@{/payment/userEntity/add}" method="post" th:object="${billEntity}">
+          <form action="#" th:action="@{/payment/user/add}" method="post" th:object="${bill}">
             <div class="row g-3">
               <div class="col-12 col-sm-6">
                 <label for="fullName" class="form-label w-100">Full name</label>
@@ -150,7 +150,7 @@
                   placeholder="1234 Main St"
                   required=""
                   th:field="*{address}"
-                />
+                />billEntity
                 <div class="invalid-feedback">
                   Please enter your shipping address.
                 </div>
@@ -294,10 +294,11 @@
             >
               PAYMENT
             </button>
-          
+          </form>
+
         </div>
         <div
-          th:switch="${listProductEntities}"
+          th:switch="${listProducts}"
           class="col-12 col-md-4 bg-dark text-light rounded p-4"
         >
           <h4
@@ -313,17 +314,17 @@
           <div th:case="*">
             <ul class="list-group mb-3 mt-3">
               <li
-                th:each="p : ${listProductEntities}"
+                th:each="p : ${listProducts}"
                 class="list-group-item d-flex justify-content-between"
               >
                 <div>
-                  <h6 th:text="${p.productEntity.name}" class="my-0"></h6>
+                  <h6 th:text="${p.product.name}" class="my-0"></h6>
                   <small
                     th:text="'Quantity ' + ${p.quantity}"
                     class="text-muted"
                   ></small>
                 </div>
-                <span th:text="${p.productEntity.price}" class="text-muted"> </span>
+                <span th:text="${p.product.price}" class="text-muted"> </span>
               </li>
 
               <li class="list-group-item d-flex justify-content-between">
@@ -343,7 +344,7 @@
     >
       <div class="container p-4"></div>
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2020 Copyright: Trần Mỹ Hạnh - 51900794
+        © 2023 Copyright: Pham Tri Hung - 52000049
         <a class="text-white" href="#">Retail Store</a>
       </div>
     </footer>

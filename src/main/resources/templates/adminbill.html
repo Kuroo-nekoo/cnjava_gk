@@ -29,7 +29,7 @@
       <button type="button" class="btn btn-dark" id="btn-sidebar">
         <i class="fa fa-bars fs-1" aria-hidden="true"></i>
       </button>
-      <p  th:text="${username}" class="m-3 fs-5">Hi Admin</p>
+      <p  th:text="${user}" class="m-3 fs-5">Hi Admin</p>
     </header>
     <div class="row m-0">
       <div
@@ -42,12 +42,12 @@
           <a th:href="@{/admin}" href="#" class="nav-link text-white " aria-current="page"> Home </a>
         </li> -->
         <li>
-          <a th:href="@{/admin/billEntity}" class="nav-link active">
+          <a th:href="@{/admin/bill}" class="nav-link active">
             Revenue/Bill Management
           </a>
         </li>
         <li>
-          <a th:href="@{/admin/productEntity}" class="nav-link text-white"> Product Management </a>
+          <a th:href="@{/admin/product}" class="nav-link text-white"> Product Management </a>
         </li>
         <li>
           <a th:href="@{/admin}" class="nav-link text-white"> Account Managememt </a>
@@ -66,13 +66,13 @@
           <div class="d-flex justify-content-between">
             <h4 class="d-inline-block mr-3" th:if="${total}" th:text="${total}">Total</h4>
             <div class="ml-3 pl-3">
-              <a th:href="@{/admin/billEntity/add}">
-                <button class="btn btn-warning fw-bold">Add</buttton>
+              <a th:href="@{/admin/bill/add}">
+                <button class="btn btn-warning fw-bold">Add</button>
               </a>
             </div>
           </div>
           <div>
-            <table th:if="${listBillEntities}" class="table mt-3 table-responsive table-hover">
+            <table th:if="${listBills}" class="table mt-3 table-responsive table-hover">
               <thead class="table-dark">
                 <tr>
                   <th scope="col">Id</th>
@@ -87,7 +87,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="b : ${listBillEntities}">
+                <tr th:each="b : ${listBills}">
                   <td th:text="${b.id}"></td>
                   <td th:text="${b.name}"></td>
                   <td th:text="${b.phone}"></td>
@@ -97,11 +97,11 @@
                   <td th:text="${b.statusPay}"></td>
                   <td th:text="${b.paymentMethod}"></td>
                   <td class="w-25">
-                    <a th:href="@{/admin/billEntity/update/{id}(id=${b.id})}">
+                    <a th:href="@{/admin/bill/update/{id}(id=${b.id})}">
                       <button class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>
                       </button>
                     </a>
-                    <a th:href="@{/add/billEntity/delete/{id}(id=${b.id})}">
+                    <a th:href="@{/admin/bill/delete/{id}(id=${b.id})}">
                       <button class="btn btn-warning"><i class="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </a>

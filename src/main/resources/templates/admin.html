@@ -44,12 +44,12 @@
             <a th:href="@{/admin}" href="#" class="nav-link text-white" aria-current="page"> Home </a>
           </li> -->
           <li>
-            <a th:href="@{/admin/billEntity}" class="nav-link text-white">
+            <a th:href="@{/admin/bill}" class="nav-link text-white">
               Revenue/Bill Management
             </a>
           </li>
           <li>
-            <a th:href="@{/admin/productEntity}" class="nav-link text-white"> Product Management </a>
+            <a th:href="@{/admin/product}" class="nav-link text-white"> Product Management </a>
           </li>
           <li>
             <a th:href="@{/admin}" class="nav-link  active"> Account Managememt </a>
@@ -67,12 +67,12 @@
           <h1 class="text-center mt-5">Account Management</h1>
           <div class="d-flex justify-content-end">
             <a th:href="@{/admin/account/add}">
-              <button th:if="${listUserEntities} != null" class="text-decoration-none btn btn-warning fw-bold">Add</buttton>
+              <button th:if="${listUsers} != null" class="text-decoration-none btn btn-warning fw-bold">Add</button>
             </a>
           </div>
           <div>
-          <h4 class="text-center" th:if="${listUserEntities == null}">there are no userEntity in the database</h4>
-            <table th:if="${listUserEntities} != null" class="table mt-3 table-responsive table-hover">
+          <h4 class="text-center" th:if="${listUsers == null}">there are no userEntity in the database</h4>
+            <table th:if="${listUsers} != null" class="table mt-3 table-responsive table-hover">
               <thead class="table-dark">
                 <tr>
                   <th scope="col">Id</th>
@@ -88,7 +88,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="u : ${listUserEntities}">
+                <tr th:each="u : ${listUsers}">
                   <td th:text="${u.id}"></td>
                   <td th:text="${u.username}"></td>
                   <td th:text="${u.roles}"></td>

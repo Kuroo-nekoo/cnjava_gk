@@ -19,8 +19,8 @@
               <div class="row g-0">
                 <form
                   class="card-body p-md-5 text-black"
-                  th:action="@{/admin/billEntity/save}"
-                  th:object="${billEntity}"
+                  th:action="@{/admin/bill/save}"
+                  th:object="${bill}"
                   method="post"
                   id="form"
                 >
@@ -43,8 +43,7 @@
                           th:value="*{name}"
                           class="form-control form-control-lg"
                         />
-                        <label class="form-label" for="fullname" required
-                          >Fullname</label
+                        <label class="form-label" for="name" required >Fullname</label
                         >
                       </div>
                     </div>
@@ -56,8 +55,9 @@
                           id="phone"
                           th:value="*{phone}"
                           class="form-control form-control-lg"
+                          required
                         />
-                        <label class="form-label" for="phone" required
+                        <label class="form-label" for="phone"
                           >Phone</label
                         >
                       </div>
@@ -71,8 +71,9 @@
                       id="address"
                       th:value="*{address}"
                       class="form-control form-control-lg"
+                      required
                     />
-                    <label class="form-label" for="address" required
+                    <label class="form-label" for="address"
                       >Address</label
                     >
                   </div>
@@ -82,6 +83,7 @@
                         id="payment"
                         th:field="*{paymentMethod}"
                         class="form-select form-select-lg"
+                        required
                       >
                         <option
                           class="d-none"
@@ -89,7 +91,7 @@
                         ></option>
                         <option th:value="'cash'">Cash</option>
                       </select>
-                      <label class="form-label" for="payment" required
+                      <label class="form-label" for="payment"
                         >Payment method</label
                       >
                     </div>
