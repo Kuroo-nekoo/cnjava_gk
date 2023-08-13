@@ -22,4 +22,8 @@ public interface ProductService {
 	List<ProductEntity> searchProducts(String searchTerm);
 
 	List<ProductEntity> searchProduct (String keyword);
+	List<String> findProductBrand();
+	List<String> findProductColor();
+	List<ProductEntity> filter(String filter);
+
 }

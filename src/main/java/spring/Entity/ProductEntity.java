@@ -30,6 +30,8 @@ public class ProductEntity {
 	private String description;
 	private String img;
 	private double price;
+	private String color;
+	private String brand;
 	
 	@OneToMany(mappedBy="product", cascade = CascadeType.ALL)
 	private Set<OrderEntity> orders;

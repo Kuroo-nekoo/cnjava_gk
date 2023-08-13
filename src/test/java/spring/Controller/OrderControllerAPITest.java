@@ -29,9 +29,9 @@ public class OrderControllerAPITest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
-        orderControllerAPI = new OrderControllerAPI(orderService);
-        mockMvc = MockMvcBuilders.standaloneSetup(orderControllerAPI).build();
+//        MockitoAnnotations.openMocks(this);
+//        orderControllerAPI = new OrderControllerAPI(orderService);
+//        mockMvc = MockMvcBuilders.standaloneSetup(orderControllerAPI).build();
     }
 
     @Test
